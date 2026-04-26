@@ -1,10 +1,35 @@
-<script src="https://armorgames.com/play/12369/bob-the-robber"></script>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
+
+#ruffle-container {
+    width: 100vw;
+    height: 100vh;
+}
+</style>
+
+<div id="ruffle-container"></div>
+
 <script>
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.addEventListener("load", (event) => {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-        document.body.appendChild(player);
-        player.load("bob-the-robber-12369.swf"); // Make sure this matches your file name
-    });
+window.addEventListener("load", () => {
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
+
+    const container = document.getElementById("ruffle-container");
+    container.appendChild(player);
+
+    // Make canvas fill screen
+    player.style.width = "100%";
+    player.style.height = "100%";
+
+    player.load("bob-the-robber-12369.swf");
+});
 </script>
